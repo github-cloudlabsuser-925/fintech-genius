@@ -1,8 +1,13 @@
 # fintech-genius
 
 
-npm install express @azure/cosmos
+
+## how to run
+
+### Step 1
+
+npm install 
 
 
-# to run 
+### Step 2
 node app.js
