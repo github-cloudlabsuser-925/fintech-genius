@@ -2,8 +2,69 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './AddCard.css';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 
-
+const rewardValues = {
+  Cashback: [
+    'Quicksilver Reward',
+    'Quicksilver Rewards for Good Credit',
+    'Savor Rewards',
+    'SavorOne Rewards',
+    'SavorOne Rewards for Good Credit',
+    'QuicksilverOne Rewards',
+    'SavorOne Rewards for Students',
+    'Quicksilver Rewards for Students',
+    'Quicksilver Secured Rewards',
+    'Capital One Walmart Rewards® Mastercard®',
+    'REI Co-op® Mastercard®',
+    'Pottery Barn Key Rewards Visa',
+    'Williams Sonoma Key Rewards Visa',
+    'West Elm Key Rewards Visa',
+    'The Key Rewards Visa',
+    'Spark 2% Cash Plus',
+    'Spark 1.5% Cash Select - Excellent Credit',
+    'Spark 1.5% Cash Select - Good Credit',
+    'Spark 1% Classic',
+    'BJ’s One™ Mastercard®',
+    'BJ’s One+™ Mastercard®',
+    'Bank of America® Customized Cash Rewards',
+    'Bank of America® Unlimited Cash Rewards',
+    'Bank of America® Premium Rewards® Elite',
+    'Bank of America® Customized Cash Rewards for Students',
+    'Bank of America® Unlimited Cash Rewards for Students',
+    'Bank of America® Customized Cash Rewards Secured',
+    'Bank of America® Unlimited Cash Rewards Secured',
+    'Susan G. Komen® Customized Cash Rewards credit card'
+  ],
+  Travel: [
+    'Venture X Rewards',
+    'Venture Rewards',
+    'VentureOne Rewards',
+    'VentureOne Rewards for Good Credit',
+    'Venture X Business',
+    'Spark 2X Miles',
+    'Spark 1.5X Miles Select',
+    'Bank of America® Travel Rewards',
+    'Bank of America® Premium Rewards®',
+    'Bank of America® Premium Rewards® Elite',
+    'Bank of America® Travel Rewards for Students',
+    'Bank of America® Travel Rewards Secured',
+    'Alaska Airlines Visa Signature®',
+    'Free Spirit® Travel More World Elite Mastercard®',
+    'Allways Rewards Visa®',
+    'Air France KLM World Elite Mastercard®',
+    'Royal Caribbean Visa Signature®',
+    'Norwegian Cruise Line® World Mastercard®',
+    'Celebrity Cruises Visa Signature®'
+  ],
+  Dining: [
+    'Savor Rewards',
+    'SavorOne Rewards',
+    'SavorOne Rewards for Good Credit',
+    'SavorOne Rewards for Students'
+  ]
+};
 const AddCard = () => {
 
   const apiUrl = "https://fintech-cards.azurewebsites.net";
@@ -107,14 +168,29 @@ const AddCard = () => {
         Institution:
         <input  className='add-card-input'  type="text" name="institution" value={card.institution} onChange={handleChange} required />
       </label>
-      <label>
-        Reward Type:
-        <input  className='add-card-input'  type="text" name="reward_type" value={card.reward_type} onChange={handleChange} required />
+      
+            <label> 
+      <select   className='add-card-input' id="reward_type" name="reward_type" value={card.reward_type} onChange={handleChange} required>
+      <option value="" disabled selected>Reward Type</option>
+        <option value="Cashback">Cashback</option>
+        <option value="Travel">Travel</option>
+        <option value="Dining">Dining</option>
+      </select>
       </label>
-      <label>
+      {/* <label>
         Reward Value:
         <input  className='add-card-input'  type="text" name="reward_value" value={card.reward_value} onChange={handleChange} required />
+      </label> */}
+      <label>
+       
+        <select name="reward_value" className='add-card-input' value={card.reward_value} onChange={handleChange}>
+          <option value="">Select reward value</option>
+          {rewardValues[card.reward_type]?.map((value) => (
+            <option key={value} value={value}>{value}</option>
+          ))}
+        </select>
       </label>
+
       <label>
         Cardholder Name:
         <input  className='add-card-input'  type="text" name="cardholderName" value={card.cardholderName} onChange={handleChange} required />
