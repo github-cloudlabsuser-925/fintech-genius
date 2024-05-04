@@ -10,7 +10,7 @@ function CreateAccount() {
   const [firstName, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const navigate = useNavigate();
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiUrl = "https://fintech-cards.azurewebsites.net";
 
 
   const handleSubmit = async (event) => {

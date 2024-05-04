@@ -6,7 +6,7 @@ import './AddCard.css';
 
 const AddCard = () => {
 
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiUrl = "https://fintech-cards.azurewebsites.net";
     const [redirectToLogin, setRedirectToLogin] = useState(false);
         const navigate = useNavigate();
       

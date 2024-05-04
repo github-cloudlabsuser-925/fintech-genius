@@ -9,7 +9,7 @@ import './Dashboard.css';
 function Dashboard() {
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiUrl = "https://fintech-cards.azurewebsites.net";
 
 
 

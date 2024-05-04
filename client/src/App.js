@@ -8,12 +8,12 @@ import AddCard from './pages/AddCard/AddCard';
 
 
 
-const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const apiUrl = "https://fintech-cards.azurewebsites.net";
 
 
 function App() {
   console.log('API URL:', apiUrl);
-  
+
   return (
     <Router>
       <Routes>

@@ -6,7 +6,7 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiUrl = "https://fintech-cards.azurewebsites.net";
   console.log('API URL:', apiUrl);
 
   const navigate = useNavigate ();
