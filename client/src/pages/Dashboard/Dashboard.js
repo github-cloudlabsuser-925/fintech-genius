@@ -34,7 +34,7 @@ function Dashboard() {
   
     if (response.ok) {
       // If the card was removed successfully, fetch the updated list of cards
-      const updatedCards = await fetch(`/get_credit_cards/${localStorage.getItem('Id')}`);
+      const updatedCards = await fetch(`${apiUrl}/get_credit_cards/${localStorage.getItem('Id')}`);
       if (updatedCards.ok) {
         // Update the state of your component with the updated list of cards
         const cardsData = await updatedCards.json();
