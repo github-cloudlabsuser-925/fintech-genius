@@ -13,12 +13,12 @@ const algorithm = 'aes-256-cbc';
 const { check, validationResult } = require('express-validator');
 
 // Set the Azure and AI Search values from environment variables
-const openaiendpoint = process.env["AZURE_OPENAI_ENDPOINT"];
-const azureApiKey = process.env["AZURE_OPENAI_API_KEY"];
-const deploymentId = process.env["AZURE_OPENAI_DEPLOYMENT_ID"];
-const searchEndpoint = process.env["AZURE_AI_SEARCH_ENDPOINT"];
-const searchKey = process.env["AZURE_AI_SEARCH_API_KEY"];
-const searchIndex = process.env["AZURE_AI_SEARCH_INDEX"];
+const openaiendpoint = process.env.AZURE_OAI_ENDPOINT;
+const azureApiKey = process.env.AZURE_OAI_KEY;
+const deploymentId = process.env.AZURE_OAI_DEPLOYMENT_NAME;
+const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT;
+const searchKey = process.env.AZURE_SEARCH_KEY;
+const searchIndex = process.env.AZURE_SEARCH_INDEX;
 
 const aiClient = new OpenAIClient(openaiendpoint, new AzureKeyCredential(azureApiKey));
 
