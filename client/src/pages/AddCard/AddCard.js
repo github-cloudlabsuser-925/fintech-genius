@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './AddCard.css';
-import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 
 const rewardValues = {
