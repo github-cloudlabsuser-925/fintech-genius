@@ -5,14 +5,11 @@ import './AddCard.css';
 
 
 const AddCard = () => {
-  
+
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
     const [redirectToLogin, setRedirectToLogin] = useState(false);
         const navigate = useNavigate();
       
-        const redirectToLoginDo = () => {
-          navigate('/login');
-        };
       
   const [card, setCard] = useState({
     number: '',

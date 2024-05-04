@@ -17,7 +17,7 @@ function Dashboard() {
     fetch(`${apiUrl}/get_credit_cards/${localStorage.getItem('Id')}`)
       .then(response => response.json())
       .then(data => setCards(data));
-  }, []);
+  }, [apiUrl]);
 
 
   const handleAddCard = () => {
