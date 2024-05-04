@@ -26,11 +26,22 @@ function Dashboard() {
             // Add your logic for adding a card here
   };
 
-  const handleRemoveCard = () => { 
-    console.log('Remove Card button clicked');
-
-    // Add your logic for removing a card here
-  };
+  async function handleRemoveCard(cardNumber) {
+    // Call the API endpoint to remove the card
+    const response = await fetch(`${apiUrl}/remove_credit_card/${localStorage.getItem('Id')}/${cardNumber}`, {
+      method: 'DELETE',
+    });
+  
+    if (response.ok) {
+      // If the card was removed successfully, fetch the updated list of cards
+      const updatedCards = await fetch(`/get_credit_cards/${localStorage.getItem('Id')}`);
+      if (updatedCards.ok) {
+        // Update the state of your component with the updated list of cards
+        const cardsData = await updatedCards.json();
+        setCards(cardsData);
+      }
+    }
+  }
 
   const handleLogout = async () => {
     console.log('Logout button clicked');
@@ -56,9 +67,6 @@ function Dashboard() {
       <button className="button logout" onClick={handleLogout}>Logout</button>
       <h1>Dashboard</h1>
       <button className="button"  onClick={handleAddCard}>Add Card</button>
-      <button className="button"  onClick={handleRemoveCard}>Remove Card</button>
-
-
 
       <table className='table'>
         <thead>
@@ -71,11 +79,14 @@ function Dashboard() {
         </thead>
         <tbody>
           {cards.map((card) => (
-            <tr key={card.number}>
+            <tr key={card.number} className='card-row'>
               <td>{card.number}</td>
               <td>{card.expiry_year} / {card.expiry_month} </td>
               <td>{card.institution}</td>
               <td>{card.reward_type}</td>
+              <td>
+                  <button className="remove-button" onClick={() => handleRemoveCard(card.number)}>Remove</button>
+            </td>
             </tr>
           ))}
         </tbody>
