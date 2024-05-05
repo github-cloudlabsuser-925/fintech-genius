@@ -7,13 +7,38 @@
 .table th, .table td {
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+.table td:nth-child(1), /* Institution column */
+.table td:nth-child(2) /* Reward type column */ {
+    width: 30%;
     text-align: left;
 }
 
-.table th {
+.table td:first-child
+{
+    width: 40%;
+    text-align: center;
+}
+
+
+.table th{
     background-color: #4CAF50;
     color: white;
+    text-align: left;
 }
+
+
+.table th:first-child  {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+
+
+
+
+
 
 .table tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -22,6 +47,13 @@
 .table td {
     position: relative; /* Add this to make the cell a positioning context for the button */
 }
+
+.table td:last-child {
+    width: 0;
+    overflow: hidden;
+}
+
+
 
 .button {
     background-color: #4CAF50; /* Green */
@@ -62,7 +94,7 @@
   .remove-button {
     position: absolute; /* Make the button positioned absolutely */
     top: 50%; /* Center it vertically */
-    right: 200%; /* Place it near the right edge of the cell */
+    right: 010%; /* Place it near the right edge of the cell */
     transform: translateY(-50%); /* This is to perfectly center it vertically, as top: 50% alone won't do it */
  
     background-color: #f44336; /* Red */
@@ -118,6 +150,10 @@
     animation: slide-up 0.5s ease-out;
 
   }
+
+  .add-card-button {
+    float: right;
+}
 
   
 .chat-popup::-webkit-scrollbar {
@@ -191,6 +227,11 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.navbar-title {
+    text-align: center;
+    flex-grow: 1;
+}
+
 .open-chat-button:hover {
     background-color: #45a049; /* Darker green on hover */
     transform: scale(1.1); /* Slightly enlarge the button on hover */
@@ -213,12 +254,12 @@
 
 .close-chat-button {
     /* existing styles... */
-    align-self: flex-end;
+    position: sticky;
     background-color: #e25151; /* Green */
     border: none;
     color: white;
     padding: 5px 10px; /* Adjust padding to make the button smaller */
-    bottom: 0; /* Align the button to the bottom */
+    top: 0; /* Align the button to the bottom */
     right: 0; /* Align the button to the right */
     text-align: center;
     text-decoration: none;
@@ -229,10 +270,6 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.close-chat-button {
-    /* existing styles... */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
 
 .close-chat-button:hover {
     background-color: #d32f2f; /* Darker red on hover */

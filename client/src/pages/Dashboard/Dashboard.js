@@ -11,7 +11,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 function Navbar({ onLogout }) {
   return (
     <nav className="navbar">
-      <center><h1>Dashboard</h1></center>
+      <h1 className="navbar-title">Dashboard</h1>
       <button className="button logout" onClick={onLogout}>Logout</button>
     </nav>
   );
@@ -79,13 +79,12 @@ function Dashboard() {
     <div>
       <Navbar onLogout={handleLogout} />
       {/* <button className="button logout" onClick={handleLogout}>Logout</button> */}
-      <button className="button"  onClick={handleAddCard}>Add Card</button>
+      <button className="button add-card-button"  onClick={handleAddCard}>Add Card</button>
 
       <table className='table'>
         <thead>
           <tr>
             <th>Card</th>
-            <th>Card Number</th>
             <th>Institution</th>
             <th>Reward Type</th>
           </tr>
@@ -103,20 +102,19 @@ function Dashboard() {
                 />
 
               </td>
-              <td>{card.number}</td>
               <td>{card.institution}</td>
-              <td>{card.reward_type}</td>
-              <td>
-                  <button className="remove-button" onClick={() => handleRemoveCard(card.number)}>Remove</button>
-            </td>
+              <td className='column-with-button'>{card.reward_type}
+              <button className="remove-button" onClick={() => handleRemoveCard(card.number)}>Remove</button>
+              </td>
+              
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="chat-button open-chat-button" onClick={() => setShowChat(true)}>Card Benefit Advisor</button>
+      <button className="chat-button open-chat-button" onClick={() => setShowChat(true)}>Rewards Genius Bot</button>
       {showChat && (
       <div className="chat-popup">
-        <button className='chat-button close-chat-button' onClick={() => setShowChat(false)}>End Benefit Consultation</button>
+        <button className='chat-button close-chat-button' onClick={() => setShowChat(false)}>X</button>
     <ChatInterface conversation={conversation} setConversation={setConversation} />
     
   </div>

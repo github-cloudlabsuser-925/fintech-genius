@@ -1,19 +1,21 @@
 
 .chat-interface {
-  width: 90%; /* Adjust this value as needed */
-  height: 90%; /* Adjust this value as needed */
+  width: 100%; /* Adjust this value as needed */
+  height: 95%; /* Adjust this value as needed */
   /* other styles... */
 }
 
 .chat-interface input[type="text"] {
-    padding: 20px 10px;
+    padding: 5px 5px;
     border: 1px solid #ccc;
     transition: border 0.3s ease;
-    width: 80%; /* Increase the width as per your requirement */
+    width: 90%; /* Increase the width as per your requirement */
     height: 40px; /* adjust this value as needed */
 
+  }
 
-
+  .chat-form{
+    width: 100%; /* Adjust this value as needed */
   }
   
 
@@ -33,6 +35,7 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    width: 5%;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -75,6 +78,7 @@
   
  
   .chat-interface form {
+    width: 100%;
     position: sticky;
     bottom: 0;
     /* existing styles... */
