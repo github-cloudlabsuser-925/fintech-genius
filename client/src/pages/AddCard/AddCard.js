@@ -151,48 +151,34 @@ const AddCard = () => {
     <div className="add-card-container">
     <form className='add-card-form' onSubmit={handleSubmit}>
       <label>
-        Card Number:
-        <input className='add-card-input' type="text" name="number" value={card.number} onChange={handleChange} required />
+        <input className='add-card-input' type="text" name="number" placeholder='Card Number*' value={card.number} onChange={handleChange} required />
       </label>
       <label>
-        Expiry Month:
-        <input  className='add-card-input'  type="text" name="expiry_month" value={card.expiry_month} onChange={handleChange} required />
+        
+        <input  className='add-card-input' placeholder='Cardholder Name*' type="text" name="cardholderName" value={card.cardholderName} onChange={handleChange} required />
       </label>
       <label>
-        Expiry Year:
-        <input  className='add-card-input'  type="text" name="expiry_year" value={card.expiry_year} onChange={handleChange} required />
+        <input  className='add-card-input'  type="text" name="institution" placeholder='Institution*' value={card.institution} onChange={handleChange} required />
       </label>
-      <label>
-        Institution:
-        <input  className='add-card-input'  type="text" name="institution" value={card.institution} onChange={handleChange} required />
-      </label>
-      
-            <label> 
+      <label> 
       <select   className='add-card-input' id="reward_type" name="reward_type" value={card.reward_type} onChange={handleChange} required>
-      <option value="" disabled selected>Reward Type</option>
+      <option value="" disabled selected>Select Reward Category*</option>
         <option value="Cashback">Cashback</option>
         <option value="Travel">Travel</option>
         <option value="Dining">Dining</option>
       </select>
       </label>
-      {/* <label>
-        Reward Value:
-        <input  className='add-card-input'  type="text" name="reward_value" value={card.reward_value} onChange={handleChange} required />
-      </label> */}
+
       <label>
-       
         <select name="reward_value" className='add-card-input' value={card.reward_value} onChange={handleChange}>
-          <option value="">Select reward value</option>
+          <option value="">Select Reward Program*</option>
           {rewardValues[card.reward_type]?.map((value) => (
             <option key={value} value={value}>{value}</option>
           ))}
         </select>
       </label>
 
-      <label>
-        Cardholder Name:
-        <input  className='add-card-input'  type="text" name="cardholderName" value={card.cardholderName} onChange={handleChange} required />
-      </label>
+
       <input className='button' type="submit" value="Add Card" />
       <button className="button" onClick={handleDashboard}>Dashboard</button>
     </form>

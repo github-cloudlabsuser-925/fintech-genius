@@ -89,6 +89,18 @@
     right: 10px;
     /* other styles... */
   }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
   
   .chat-popup {
     position: fixed;
@@ -103,6 +115,8 @@
     overflow-y: scroll; /* make it scrollable */
     resize: both; /* This allows the element to be resizable both horizontally and vertically */
     overflow: auto; /* This is necessary for resize to work */
+    animation: slide-up 0.5s ease-out;
+
   }
 
   
@@ -224,3 +238,37 @@
     background-color: #d32f2f; /* Darker red on hover */
     transform: scale(1.1); /* Slightly enlarge the button on hover */
 }
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .navbar h1 {
+    margin: 0;
+  }
+  
+  .navbar .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar .button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+  }

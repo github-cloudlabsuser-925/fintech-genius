@@ -48,13 +48,21 @@ const ChatInterface = ({ conversation, setConversation }) => {
     <div className='chat-interface'>
       <div className='chat-messages'>
       <ul >
-        {conversation.map((message, i) => (
+        {conversation.map((message, i) => {
+          const lines = message.content.split('\n');
+         return (
           <li key={i} className={`${message.role} message ${conversation.length - i <= 10 ? 'show' : ''}`}>
-            <strong>{message.role === 'user' ? 'You' : 'Advisor'}:</strong> {message.content}
-            <span className='timestamp'>{new Date(message.timestamp).toLocaleTimeString()}</span> {/* Display the timestamp */}
+            <strong>{message.role === 'user' ? 'You' : 'Advisor'}:</strong>
+            {lines.map((line, j) => (
+        <React.Fragment key={j}>
+          <span dangerouslySetInnerHTML={{ __html: line }} />
+          <br />
+        </React.Fragment>
+      ))}            <span className='timestamp'>{new Date(message.timestamp).toLocaleTimeString()}</span> {/* Display the timestamp */}
 
           </li>
-        ))}
+        );
+         })}
         {isLoading && <li className='loading-message message'>Loading...</li>} {/* Show loading text when isLoading is true */}
 
       </ul>

@@ -3,8 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Dashboard.css';
 import ChatInterface from './ChatInterface';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 
 
+
+function Navbar({ onLogout }) {
+  return (
+    <nav className="navbar">
+      <center><h1>Dashboard</h1></center>
+      <button className="button logout" onClick={onLogout}>Logout</button>
+    </nav>
+  );
+}
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -66,15 +77,15 @@ function Dashboard() {
 
   return (
     <div>
-      <button className="button logout" onClick={handleLogout}>Logout</button>
-      <h1>Dashboard</h1>
+      <Navbar onLogout={handleLogout} />
+      {/* <button className="button logout" onClick={handleLogout}>Logout</button> */}
       <button className="button"  onClick={handleAddCard}>Add Card</button>
 
       <table className='table'>
         <thead>
           <tr>
+            <th>Card</th>
             <th>Card Number</th>
-            <th>Expiry</th>
             <th>Institution</th>
             <th>Reward Type</th>
           </tr>
@@ -82,8 +93,17 @@ function Dashboard() {
         <tbody>
           {cards.map((card) => (
             <tr key={card.number} className='card-row'>
+              <td>
+                <Cards  
+                  number={card.number}
+                  name={card.cardholderName}
+                  expiry="**/**"
+                  cvc="***"
+                  focused={card.meta_data.focused}
+                />
+
+              </td>
               <td>{card.number}</td>
-              <td>{card.expiry_year} / {card.expiry_month} </td>
               <td>{card.institution}</td>
               <td>{card.reward_type}</td>
               <td>
