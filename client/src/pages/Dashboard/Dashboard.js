@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Dashboard.css';
-
+import ChatInterface from './ChatInterface';
 
 
 
 function Dashboard() {
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
+  const [showChat, setShowChat] = useState(false);
+  const [conversation, setConversation] = useState([]);
   const apiUrl = "https://fintech-cards.azurewebsites.net";
 
 
@@ -91,6 +93,14 @@ function Dashboard() {
           ))}
         </tbody>
       </table>
+      <button className="chat-button open-chat-button" onClick={() => setShowChat(true)}>Card Benefit Advisor</button>
+      {showChat && (
+      <div className="chat-popup">
+        <button className='chat-button close-chat-button' onClick={() => setShowChat(false)}>End Benefit Consultation</button>
+    <ChatInterface conversation={conversation} setConversation={setConversation} />
+    
+  </div>
+)}
     </div>
   );
 }

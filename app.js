@@ -217,9 +217,29 @@ app.post('/logout', (req, res) => {
     });
 });
 
-app.get('/ai_call',async (req, res) => {
+app.post('/ai_call',async (req, res) => {
 
-    const { questionText, programArray } = req.body;
+    let { id, questionText } = req.body;
+
+    id = id ? id : req.session.id;
+    console.log(id + "id");
+    
+    console.log("Id in the session : " + req.session.id);
+
+    const { resource } = await container.item(id).read();
+
+    console.log(resource);
+    const decryptedCards = resource.cards.map(card => {
+        if (card.number) {
+            const decipher = crypto.createDecipheriv(algorithm, key1, iv);
+            let decrypted = decipher.update(card.number.toString(), 'hex', 'utf8');
+            decrypted += decipher.final('utf8');
+            return { ...card, number: decrypted };
+        }
+        return card;
+    });
+    
+    const cardStrings = decryptedCards.map((card, i) => `card ${card.number} with program "${card.reward_value} of ${card.institution}"`);
 
     const messages = [
         {
@@ -228,7 +248,7 @@ app.get('/ai_call',async (req, res) => {
         },
         {
             role: "user",
-            content: questionText + ` I have the following credit cards available ${[...programArray]}`
+            content: questionText + ` I have the following credit cards available ${[...cardStrings]}`
         },
     ];
 
@@ -258,8 +278,9 @@ app.get('/ai_call',async (req, res) => {
       }
     }
     console.log(response);
-    res.json(response);
-
+    if(response){
+        res.json({response: response});
+    }
 });
 
 
